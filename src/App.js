@@ -14,7 +14,7 @@ const todos = [
 function App() {
   return (
     <div id="root">
-      <TodoCounter />
+      <TodoCounter todos={todos}/>
       <TodoSearch />
       <TodoList>
         {todos.map((todo) => (

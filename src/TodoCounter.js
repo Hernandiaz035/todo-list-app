@@ -1,9 +1,12 @@
 import react from 'react';
 import './TodoCounter.css';
 
-function TodoCounter() {
+function TodoCounter({ todos }) {
+    const completedTodos = todos.filter((todo) => !!todo.completed).length;
+    const totalTodos = todos.length;
+
     return (
-        <h2>You have completed 2 out of 3 items.</h2>
+        <h2>You have completed {completedTodos} out of {totalTodos} items.</h2>
     );
 }
 

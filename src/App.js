@@ -30,6 +30,17 @@ function App() {
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
 
+  const completeTodo = (index) => {
+    let tmpTodos = [...todos];
+    tmpTodos[index].completed = !tmpTodos[index].completed;
+    setTodos(tmpTodos);
+  }
+  const deleteTodo = (index) => {
+    let tmpTodos = [...todos];
+    tmpTodos.splice(index,1);
+    setTodos(tmpTodos);
+  }
+
   return (
     <div id="root">
       <TodoCounter
@@ -41,11 +52,13 @@ function App() {
         setSearchValue={setSearchValue}
       />
       <TodoList>
-        {searchedTodos.map((todo) => (
+        {searchedTodos.map((todo, index) => (
           <TodoItem
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            onComplete={( ) => completeTodo(index)}
+            onDelete={( ) => deleteTodo(index)}
           />
         ))}
       </TodoList>
@@ -53,5 +66,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

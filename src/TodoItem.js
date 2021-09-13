@@ -1,12 +1,18 @@
-import react from 'react'
+import react from 'react';
+import './TodoItem.css';
 
 function TodoItem(props) {
     return (
-        <li>
-            <span>C</span>
-            <p>{props.text}</p>
-            <input type="checkbox" checked={props.completed} />
-            <span>X</span>
+        <li className="TodoItem">
+            <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}>
+                √
+            </span>
+            <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+                {props.text}
+            </p>
+            <span className="Icon Icon-delete">
+                x
+            </span>
         </li>
     );
 }

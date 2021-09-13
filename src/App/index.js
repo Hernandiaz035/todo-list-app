@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem.js';
-import { CreateTodoButton } from './CreateTodoButton';
-import './App.css';
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem/index.js';
+import { CreateTodoButton } from '../CreateTodoButton';
+// import './App.css';
 
 const defaultTodos = [
   {text: "Do the shopping.", completed: false},

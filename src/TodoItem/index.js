@@ -1,4 +1,3 @@
-import react from 'react';
 import './TodoItem.css';
 
 function TodoItem(props) {

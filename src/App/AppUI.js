@@ -1,4 +1,5 @@
 import React from "react";
+import { TodoContext } from "../TodoContext";
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -6,31 +7,22 @@ import { TodoItem } from '../TodoItem/index.js';
 import { CreateTodoButton } from '../CreateTodoButton';
 // import './App.css';
 
-function AppUI({
-    error,
-    loading,
-    searchedTodos,
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    completeTodo,
-    deleteTodo,
-}) {
-    return (
-        <div id="root">
-            <TodoCounter
-                totalTodos={totalTodos}
-                completedTodos={completedTodos}
-            />
+function AppUI() {
+    const {
+        error,
+        loading,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+    } = React.useContext(TodoContext);
 
-            <TodoSearch
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-            />
+    return (
+        <React.Fragment>
+            <TodoCounter />
+            <TodoSearch />
 
             <TodoList>
-                {error && <p>There was an Error!</p>}
+                {error && <p>There was an Error!. {`The error is:${error}`}</p>}
                 {loading && <p>Fetching Data...</p>}
                 {(!loading && !searchedTodos.length) && <p>Create your own ToDos</p>}
                 {searchedTodos.map((todo, index) => (
@@ -45,7 +37,7 @@ function AppUI({
             </TodoList>
 
             <CreateTodoButton />
-        </div>
+        </React.Fragment>
     );
 }
 

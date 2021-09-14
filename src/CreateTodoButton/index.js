@@ -1,8 +1,13 @@
 import './CreateTodoButton.css';
 
-function CreateTodoButton() {
+function CreateTodoButton(props) {
     return (
-        <button className="CreateTodoButton">+</button>
+        <button
+            className="CreateTodoButton"
+            onClick={() => {props.setOpenModal((prevState) => !prevState)}}
+        >
+            +
+        </button>
     );
 }
 
